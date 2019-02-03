@@ -1,0 +1,14 @@
+{
+  "name": "renpy-translate-utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./tests/test.js"
+  },
+  "author": "Dinaki",
+  "license": "ISC",
+  "dependencies": {
+    "lodash.groupby": "^4.6.0"
+  }
+}
