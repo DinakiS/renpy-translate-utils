@@ -1,6 +1,14 @@
 const groupBy = require('lodash.groupby');
 
 module.exports = {
+  /**
+   * Generate Ren'Py translation file
+   * 
+   * @param {array} data Array of blocks from parser
+   * @param {object} [options] Options
+   * @param {string} [options.language] New language
+   * @return {string}
+   */
   generateFile (data, options = {}) {
     const { language } = options;
 

@@ -44,6 +44,13 @@ const parseSource = (line) => {
 }
 
 module.exports = {
+  /**
+   * Parse Ren'Py translation file
+   * 
+   * @async
+   * @param {string} filePath Path to the file
+   * @return {Promise<array>} Array of blocks with info
+   */
   async parseFile (filePath) {
     if (!filePath) throw new Error('File path is missing.');
 
@@ -52,6 +59,12 @@ module.exports = {
     return this.parseFileContent(fileContent);
   },
   
+  /**
+   * Parse Ren'Py translation file
+   * 
+   * @param {string} file File content
+   * @return {array} Array of blocks with info
+   */
   parseFileContent (file) {
     const lines = file.split('\r\n');
     const blocks = [];
