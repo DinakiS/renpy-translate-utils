@@ -6,9 +6,9 @@ const readFile = promisify(fs.readFile);
 const readDir = promisify(fs.readdir);
 const stat = promisify(fs.stat);
 
-const REGEX_SOURCE = /^# ((?:\w+[\/|\\])+\w+\.\w+):+(\d+)/;
+const REGEX_SOURCE = /^# ((?:.+[\/|\\])+.+\.\w+):+(\d+)/;
 const REGEX_META = /^translate (\w+) (.+):/;
-const REGEX_SAY = /^(?:#\s)?(\w+)?\s?"(.*)"$/;
+const REGEX_SAY = /^(?:#\s)?(.+)?\s?"(.*)"$/;
 
 const parseSayLine = (line) => {
   const reg = line.match(REGEX_SAY);
