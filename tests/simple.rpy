@@ -34,6 +34,12 @@ translate english start_cc3273fc:
     # lola "С тебя [cost] монет!"
     lola "Give me [cost] coins, now!"
 
+# game/simple.rpy:67
+translate english start_cc3273fd:
+
+    # lola "Его звали \"Destroyer\" "3000" "
+    lola "His name was \"Destroyer\" \"3000\" "
+
 translate english strings:
 
     # game/simple.rpy:53

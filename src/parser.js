@@ -8,7 +8,7 @@ const stat = promisify(fs.stat);
 
 const REGEX_SOURCE = /^# ((?:.+[\/|\\])+.+\.\w+):+(\d+)/;
 const REGEX_META = /^translate (\w+) (.+):/;
-const REGEX_SAY = /^(?:#\s)?(.+)?\s?"(.*)"$/;
+const REGEX_SAY = /^(?:#\s)?(.+?)?\s?"(.*?)"$/;
 
 const parseSayLine = (line) => {
   const reg = line.match(REGEX_SAY);
