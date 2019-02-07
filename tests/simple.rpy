@@ -37,8 +37,14 @@ translate english start_cc3273fc:
 # game/simple.rpy:67
 translate english start_cc3273fd:
 
-    # lola "Его звали \"Destroyer\" "3000" "
-    lola "His name was \"Destroyer\" \"3000\" "
+    # "Girl" "\"Destroyer\" Его звали \"3000\" "
+    "Girl" "\"Destroyer\" His name was \"3000\" "
+
+# game/simple.rpy:67
+translate english start_cc3273fd:
+
+    # "\"Destroyer\" \"3000\" "
+    "\"Destroyer\" \"3000\" "
 
 translate english strings:
 

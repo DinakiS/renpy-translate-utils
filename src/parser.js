@@ -8,7 +8,7 @@ const stat = promisify(fs.stat);
 
 const REGEX_SOURCE = /^# ((?:.+[\/|\\])+.+\.\w+):+(\d+)/;
 const REGEX_META = /^translate (\w+) (.+):/;
-const REGEX_SAY = /^(?:#\s)?(.+?)?\s?"(.*?)"$/;
+const REGEX_SAY = /^(?:#\s)?("?.+?"?\s)?"(.*?)"$/;
 
 const parseSayLine = (line) => {
   const reg = line.match(REGEX_SAY);
@@ -20,9 +20,12 @@ const parseSayLine = (line) => {
   if (reg.length === 2) {
     what = reg[1];
   } else if (reg.length === 3) {
-    who = reg[1]
+    who = reg[1];
     what = reg[2];
   }
+
+  if (who) who = who.trim();
+  what = what.trim();
 
   return {
     who,
