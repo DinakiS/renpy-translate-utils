@@ -41,7 +41,11 @@ module.exports = {
           what: origWhat
         } = block.original;
 
-        lines.push(`    # ${origWho ? `${origWho} ` : ''}"${origWhat}"`);
+        let nointeract = block.meta.nointeract
+          ? ' nointeract'
+          : '';
+
+        lines.push(`    # ${origWho ? `${origWho} ` : ''}"${origWhat}"${nointeract}`);
 
         if (block.translated) {
           const {
@@ -49,7 +53,7 @@ module.exports = {
             what
           } = block.translated;
   
-          lines.push(`    ${who ? `${who} ` : ''}"${what}"`);
+          lines.push(`    ${who ? `${who} ` : ''}"${what}"${nointeract}`);
         } else {
           lines.push('    pass');
         }

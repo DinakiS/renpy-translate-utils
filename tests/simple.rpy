@@ -1,8 +1,8 @@
 ﻿# game/simple.rpy:60
 translate english start_360a07ac:
 
-    # "Где я?"
-    "Where am I?"
+    # "Где я?" nointeract
+    "Where am I?" nointeract
 
 # game/simple.rpy:61
 translate english start_0a380365:

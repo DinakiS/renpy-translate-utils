@@ -8,28 +8,27 @@ const stat = promisify(fs.stat);
 
 const REGEX_SOURCE = /^# ((?:.+[\/|\\])+.+\.\w+):+(\d+)/;
 const REGEX_META = /^translate (\w+) (.+):/;
-const REGEX_SAY = /^(?:#\s)?("?.+?"?\s)?"(.*?)"$/;
+const REGEX_SAY = /^(?:#\s)?("?.+?"?\s)?"(.*?)"(\snointeract)?$/;
 
 const parseSayLine = (line) => {
   const reg = line.match(REGEX_SAY);
   let who = null;
   let what = '';
+  let nointeract = false;
 
   if (!reg) return null;
 
-  if (reg.length === 2) {
-    what = reg[1];
-  } else if (reg.length === 3) {
-    who = reg[1];
-    what = reg[2];
-  }
+  who = reg[1];
+  what = reg[2];
+  nointeract = reg[3] === ' nointeract';
 
   if (who) who = who.trim();
   what = what.trim();
 
   return {
     who,
-    what
+    what,
+    nointeract
   };
 };
 
@@ -111,12 +110,21 @@ module.exports = {
           translated = parseSayLine(line);
         }
 
+        let nointeract = false;
+        
+        if (original) {
+          nointeract = original.nointeract;
+          delete original.nointeract;
+          if (translated) delete translated.nointeract;
+        }
+
         blocks.push({
           type: 'say',
           meta: {
             lang,
             id,
-            source
+            source,
+            nointeract
           },
           original,
           translated
