@@ -7,8 +7,8 @@ translate english start_360a07ac:
 # game/simple.rpy:61
 translate english start_0a380365:
 
-    # "???" "Эй"
-    "???" "Hey"
+    # "???" "Эй" with vpunch
+    "???" "Hey" with vpunch
 
 # game/simple.rpy:62
 translate english start_657e3772:
