@@ -8,19 +8,21 @@ const stat = promisify(fs.stat);
 
 const REGEX_SOURCE = /^# ((?:.+[\/|\\])+.+\.\w+):+(\d+)/;
 const REGEX_META = /^translate (\w+) (.+):/;
-const REGEX_SAY = /^(?:#\s)?("?.+?"?\s)?"(.*?)"(\snointeract)?$/;
+const REGEX_SAY = /^(?:#\s)?("?.+?"?\s)?"(.*?)"(\snointeract)?(\swith (?:[^\s]*))?$/;
 
 const parseSayLine = (line) => {
   const reg = line.match(REGEX_SAY);
   let who = null;
   let what = '';
   let nointeract = false;
+  let withEffect = '';
 
   if (!reg) return null;
 
   who = reg[1];
   what = reg[2];
   nointeract = reg[3] === ' nointeract';
+  withEffect = (reg[4] || '').trim();
 
   if (who) who = who.trim();
   what = what.trim();
@@ -28,6 +30,7 @@ const parseSayLine = (line) => {
   return {
     who,
     what,
+    with: withEffect,
     nointeract
   };
 };
@@ -105,9 +108,12 @@ module.exports = {
           original = parseSayLine(line);
         }
 
+        let pass = false;
         line = lines[++i].trim();
         if (line !== 'pass' && line.match(REGEX_SAY)) {
           translated = parseSayLine(line);
+        } else if (line === 'pass') {
+          pass = true;
         }
 
         let nointeract = false;
@@ -127,7 +133,8 @@ module.exports = {
             nointeract
           },
           original,
-          translated
+          translated,
+          pass
         });
       } else if (line.startsWith('old')) {
         let source = null;
