@@ -1,10 +1,9 @@
 module.exports = {
-  main: `
-{{> header }}
+  main: `{{> header }}
 
 {{! Blocks with say statement }}
 {{#say}}
-  {{> say}}
+{{> say}}
 {{/say}}
 
 {{! Blocks with strings }}
@@ -27,20 +26,20 @@ translate {{language}} {{meta.id}}:
     #{{#who}} {{{.}}}{{/who}} "{{{what}}}"{{#meta.nointeract}} nointeract{{/meta.nointeract}}{{#with}} {{.}}{{/with}}
   {{/original}}
   {{#translated}}
-    {{#who}} {{{.}}}{{/who}} "{{{what}}}"{{#meta.nointeract}} nointeract{{/meta.nointeract}}{{#with}} {{.}}{{/with}}
+    {{#who}}{{{.}}}{{/who}} "{{{what}}}"{{#meta.nointeract}} nointeract{{/meta.nointeract}}{{#with}} {{.}}{{/with}}
   {{/translated}}
   {{^translated}}
     pass
   {{/translated}}`,
     string: `
 {{#meta.source}}
-  # {{{file}}}:{{line}}
+# {{{file}}}:{{line}}
 {{/meta.source}}
 {{#original}}
-  old "{{{what}}}"
+old "{{{what}}}"
 {{/original}}
 {{#translated}}
-  new "{{{what}}}"
+new "{{{what}}}"
 {{/translated}}`
   }
 };
