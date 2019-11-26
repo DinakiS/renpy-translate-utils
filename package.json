@@ -1,6 +1,6 @@
 {
   "name": "renpy-translate-utils",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Parse Ren'Py translation files",
   "main": "index.js",
   "scripts": {
